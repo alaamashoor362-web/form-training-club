@@ -1,6 +1,6 @@
 import React, { useId, type ReactNode } from 'react';
 export function Page({children,...props}:React.HTMLAttributes<HTMLElement>){return <main className="form-page" {...props}>{children}</main>}
-export function PageHeader({title,fact,intro}:{title:string,fact:string,intro:string}){return <header className="form-header"><h1>{title}</h1><p className="form-fact">{fact}</p><p className="form-intro">{intro}</p></header>}
+export function PageHeader({title,fact,intro}:{title:string,fact:string,intro:string}){return <header className="form-header"><h1 aria-label={title}>FORM<span>Training Club</span></h1><p className="form-fact">{fact}</p><p className="form-intro">{intro}</p></header>}
 export function SectionGroup({label,heading,children}:{label:string,heading?:string,children:ReactNode}){return <div className="form-group"><span className="form-label">{label}</span>{heading&&<h2>{heading}</h2>}{children}</div>}
 export function FooterNote({children}:{children:ReactNode}){return <footer className="form-footer-note">{children}</footer>}
 export function PhotoCredit({children}:{children:ReactNode}){return <p className="form-credit">{children}</p>}
