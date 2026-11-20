@@ -1,0 +1,10 @@
+import React, { useId, type ReactNode } from 'react';
+export function Page({children,...props}:React.HTMLAttributes<HTMLElement>){return <main className="form-page" {...props}>{children}</main>}
+export function PageHeader({title,fact,intro}:{title:string,fact:string,intro:string}){return <header className="form-header"><h1>{title}</h1><p className="form-fact">{fact}</p><p className="form-intro">{intro}</p></header>}
+export function SectionGroup({label,heading,children}:{label:string,heading?:string,children:ReactNode}){return <div className="form-group"><span className="form-label">{label}</span>{heading&&<h2>{heading}</h2>}{children}</div>}
+export function FooterNote({children}:{children:ReactNode}){return <footer className="form-footer-note">{children}</footer>}
+export function PhotoCredit({children}:{children:ReactNode}){return <p className="form-credit">{children}</p>}
+export function ExternalLink({children,href}:{children:ReactNode,href:string}){return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>}
+export function Button({children,variant='primary',compact=false,...props}:React.ButtonHTMLAttributes<HTMLButtonElement>&{variant?:'primary'|'secondary',compact?:boolean}){return <button type="button" className={`form-button form-button-${variant} ${compact?'form-button-compact':''}`} {...props}>{children}</button>}
+export function Choices({label,value,onChange,options}:{label:string,value:string,onChange:(v:string)=>void,options:{label:string,value:string}[]}){return <fieldset className="form-choices"><legend>{label}</legend><div>{options.map(o=><button key={o.value} type="button" aria-pressed={value===o.value} onClick={()=>onChange(o.value)}>{o.label}</button>)}</div></fieldset>}
+export function InputField({label,value,onChange}:{label:string,value:string,onChange:(v:string)=>void}){const id=useId();return <div className="form-field"><label htmlFor={id}>{label}</label><input id={id} type="text" autoComplete="off" value={value} onChange={e=>onChange(e.target.value)}/></div>}
